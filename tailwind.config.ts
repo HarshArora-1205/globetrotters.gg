@@ -11,6 +11,13 @@ export default {
   ],
   theme: {
   	extend: {
+			fontFamily: {
+				gilroy: ["var(--font-gilroy)"],
+				dela: ["var(--font-dela-gothic)"]
+			},
+			fontWeight:{
+				heavy: '950'
+			},
   		colors: {
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
