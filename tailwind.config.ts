@@ -11,6 +11,9 @@ export default {
   ],
   theme: {
   	extend: {
+			screens: {
+				'xs': '512px'
+			},
 			fontFamily: {
 				gilroy: ["var(--font-gilroy)"],
 				dela: ["var(--font-dela-gothic)"]
@@ -19,6 +22,17 @@ export default {
 				heavy: '950'
 			},
   		colors: {
+				"midnight-blue": 'hsl(var(--midnight-blue))',
+				"sunset-gold": 'hsl(var(--sunset-gold))',
+				"sunset-blush": 'hsl(var(--sunset-blush))',
+				"teal-blue": 'hsl(var(--teal-blue))',
+				"mist-blue": 'hsl(var(--mist-blue))',
+				"frost-blue": 'hsl(var(--frost-blue))',
+				"golden-haze": 'hsl(var(--golden-haze))',
+				"desert-gold": 'hsl(var(--desert-gold))',
+				"sage-green": 'hsl(var(--sage-green))',
+				"coral-blush": 'hsl(var(--coral-blush))',
+
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
   			card: {

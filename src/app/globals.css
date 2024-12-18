@@ -8,6 +8,19 @@ body {
 
 @layer base {
   :root {
+    /* Custom Colours */
+    --midnight-blue: 218 41% 5%;
+    --sunset-gold: 40 65% 56%;
+    --sunset-blush: 40 65% 60%;
+    --teal-blue: 209 70% 10%;
+    --mist-blue: 208 64% 88%;
+    --frost-blue: 208 100% 95%;
+    --golden-haze: 44 92% 81%;
+    --desert-gold: 34 88% 70%;
+    --sage-green: 103 28% 62%;
+    --coral-blush: 17 80% 65%;
+
+    /* ShadCN Colours */
     --background: 0 0% 100%;
     --foreground: 20 14.3% 4.1%;
     --card: 0 0% 100%;
@@ -35,6 +48,9 @@ body {
     --radius: 0.5rem;
   }
   .dark {
+    /* Custom Colors in dark mode are same as root */
+
+    /* ShadCN Colours */
     --background: 20 14.3% 4.1%;
     --foreground: 60 9.1% 97.8%;
     --card: 20 14.3% 4.1%;
