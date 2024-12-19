@@ -2,8 +2,11 @@ import "./globals.css";
 
 import type { Metadata } from "next";
 
+import { Analytics } from "@vercel/analytics/react"
+
 import { ThemeProvider } from "@/components/providers/theme-provider";
 import { dela, gilroy } from "@/lib/fonts";
+
 
 export const metadata: Metadata = {
   title: "Globetrotters",
@@ -27,6 +30,7 @@ export default function RootLayout({
         >
           {children}
         </ThemeProvider>
+        <Analytics/>
       </body>
     </html>
   );
