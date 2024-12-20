@@ -24,7 +24,7 @@ export default function RootLayout({
       <body className={`${gilroy.variable} ${dela.variable} font-gilroy antialiased`}>
         <ThemeProvider
           attribute="class"
-          defaultTheme="system"
+          defaultTheme="dark"
           enableSystem
           disableTransitionOnChange
         >

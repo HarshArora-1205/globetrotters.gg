@@ -37,7 +37,7 @@ const Hero = () => {
   });
 
   return (
-    <div className="relative h-dvh w-screen overflow-x-hidden">
+    <div className="relative h-screen w-screen overflow-x-hidden">
       <div
         id="video-frame"
         className="relative mx-auto flex h-screen w-full flex-col items-center justify-center tracking-wider"
@@ -48,7 +48,7 @@ const Hero = () => {
             autoPlay
             muted
             loop
-            style={{ width: "100dvw", height: "100dvh", objectFit: "cover" }}
+            style={{ width: "100vw", height: "100vh", objectFit: "cover" }}
           >
             video can&apos;t be played
           </video>
@@ -57,10 +57,10 @@ const Hero = () => {
         <div className="relative z-20 flex flex-col items-center gap-16 px-8 md:px-0">
           <div className="relative mt-8 w-fit flex-col text-center text-mist-blue sm:mt-0">
             <div className="flex justify-center xs:justify-between">
-              <h3 className="mt-1 text-lg font-black tracking-widest xs:-ml-6">
+              <h3 className="mt-2 text-lg z-20 font-black tracking-widest xs:-ml-6">
                 FIND YOUR
               </h3>
-              <div className="absolute -top-10 z-10 flex w-fit items-center gap-1 rounded-sm p-2 text-[10px] font-semibold leading-[0.6] outline-dashed outline-1 xs:relative xs:top-auto">
+              <div className="absolute -top-10 z-10 flex w-fit items-center gap-1 rounded-sm p-1 text-[10px] font-semibold leading-[0.6] outline-dashed outline-1 xs:relative xs:top-auto">
                 <h3 className="tracking-widest">POWERED BY AI</h3>
                 <WiStars />
               </div>
