@@ -1,11 +1,13 @@
 import "./globals.css";
 
 import type { Metadata } from "next";
+import { Toaster } from "@/components/ui/toaster"
 
 import { Analytics } from "@vercel/analytics/react"
-
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import { ThemeProvider } from "@/components/providers/theme-provider";
 import { dela, gilroy } from "@/lib/fonts";
+import ReactQueryProvider from "@/components/providers/react-query-provider";
 
 
 export const metadata: Metadata = {
@@ -28,7 +30,11 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          {children}
+          <ReactQueryProvider>
+            {children}
+            <Toaster />
+            <ReactQueryDevtools initialIsOpen={false} />
+          </ReactQueryProvider>
         </ThemeProvider>
         <Analytics/>
       </body>

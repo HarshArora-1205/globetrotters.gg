@@ -5,11 +5,13 @@ import { FaInstagram } from "react-icons/fa6";
 
 import { cn } from "@/lib/utils";
 
+import Errorbox from "./error-box";
 import { ModeToggle } from "@/components/common/mode-toggle";
-import MagicButton from "@/components/common/hover-button/hover-button";
+import MagicButton from "@/components/common/hover-button";
 import Link from "next/link";
 
 const LoginForm = () => {
+  
   return (
     <div className="flex h-full w-full selection:bg-golden-haze selection:text-midnight-blue">
       <div className="relative hidden md:block md:w-[50%] lg:w-[60%]">
@@ -59,6 +61,7 @@ const LoginForm = () => {
             you closer to your next adventure! Let Froggo guide you to an
             incredible journey ahead!
           </p>
+          <Errorbox />
           <div className="my-2 flex items-center justify-center gap-4">
             <div className="h-px flex-1 bg-midnight-blue dark:bg-frost-blue"></div>
             <span className="px-2 text-sm font-medium uppercase text-midnight-blue dark:text-frost-blue">
@@ -71,12 +74,14 @@ const LoginForm = () => {
               arialabel="insta signin button"
               text="sign in with instagram"
               variant="auto"
+              provider="instagram"
               icon={<FaInstagram className="h-4 w-4" />}
             />
             <MagicButton
               arialabel="google signin button"
               text="sign in with google"
               variant="auto"
+              provider="google"
               icon={<FaGoogle className="h-4 w-4" />}
             />
           </form>

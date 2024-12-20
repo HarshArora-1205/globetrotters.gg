@@ -6,7 +6,7 @@ import { FaInstagram } from "react-icons/fa6";
 import { cn } from "@/lib/utils";
 
 import { ModeToggle } from "@/components/common/mode-toggle";
-import MagicButton from "@/components/common/hover-button/hover-button";
+import MagicButton from "@/components/common/hover-button";
 import Link from "next/link";
 
 const RegisterForm = () => {
@@ -71,12 +71,14 @@ const RegisterForm = () => {
               arialabel="insta signin button"
               text="sign up with instagram"
               variant="auto"
+              provider="instagram"
               icon={<FaInstagram className="h-4 w-4" />}
             />
             <MagicButton
               arialabel="google signin button"
               text="sign up with google"
               variant="auto"
+              provider="google"
               icon={<FaGoogle className="h-4 w-4" />}
             />
           </form>
