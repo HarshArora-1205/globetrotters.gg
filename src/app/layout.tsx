@@ -1,12 +1,14 @@
 import "./globals.css";
 
 import type { Metadata } from "next";
+import { Toaster } from "@/components/ui/toaster";
 
-import { Analytics } from "@vercel/analytics/react"
-
+import { Analytics } from "@vercel/analytics/react";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { ThemeProvider } from "@/components/providers/theme-provider";
 import { dela, gilroy } from "@/lib/fonts";
-
+import ReactQueryProvider from "@/components/providers/react-query-provider";
+import { Suspense } from "react";
 
 export const metadata: Metadata = {
   title: "Globetrotters",
@@ -21,16 +23,24 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${gilroy.variable} ${dela.variable} font-gilroy antialiased`}>
+      <body
+        className={`${gilroy.variable} ${dela.variable} font-gilroy antialiased`}
+      >
         <ThemeProvider
           attribute="class"
-          defaultTheme="system"
+          defaultTheme="dark"
           enableSystem
           disableTransitionOnChange
         >
-          {children}
+          <ReactQueryProvider>
+            <Suspense fallback={<div>Loading...</div>}>
+              {children}
+            </Suspense>
+            <Toaster />
+            <ReactQueryDevtools initialIsOpen={false} />
+          </ReactQueryProvider>
         </ThemeProvider>
-        <Analytics/>
+        <Analytics />
       </body>
     </html>
   );

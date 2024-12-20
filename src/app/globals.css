@@ -85,4 +85,36 @@ body {
   body {
     @apply bg-background text-foreground;
   }
+
+  .nav-hover-btn {
+    @apply relative ms-10  text-xs uppercase text-blue-50 after:absolute after:-bottom-0.5 after:left-0 after:h-[2px] after:w-full after:origin-bottom-right after:scale-x-0 after:bg-neutral-800 after:transition-transform after:duration-300 after:ease-in-out hover:after:origin-bottom-left hover:after:scale-x-100 dark:after:bg-white cursor-pointer;
+  }
+
+  .floating-nav {
+    @apply bg-mist-blue border border-sunset-gold  rounded-lg;
+  }
+
+  .indicator-line {
+    @apply h-1 w-px rounded-full transition-all duration-200 ease-in-out;
+  }
+  
+  .indicator-line.active {
+    animation: indicator-line 0.5s ease infinite;
+    animation-delay: calc(var(--animation-order) * 0.1s);
+  }
+  
+  @keyframes indicator-line {
+    0% {
+      height: 4px;
+      transform: translateY(-0px);
+    }
+    50% {
+      height: 16px;
+      transform: translateY(-4px);
+    }
+    100% {
+      height: 4px;
+      transform: translateY(-0px);
+    }
+  }
 }
