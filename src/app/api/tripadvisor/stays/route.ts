@@ -12,19 +12,20 @@ export async function GET(request: Request) {
     return NextResponse.json({ error: 'Missing parameters' }, { status: 400 })
   }
 
-  const url = `https://api.content.tripadvisor.com/api/v1/location/nearby_search?category=attractions&language=en&latLong=${lat}%2C${lon}&key=${process.env.TRIPADVISOR_API_KEY}`
+  const url = `https://api.content.tripadvisor.com/api/v1/location/nearby_search?category=hotels&language=en&latLong=${lat}%2C${lon}&key=${process.env.TRIPADVISOR_API_KEY}`
 
   try {
     const response = await fetch(url, {
       headers: { accept: 'application/json' },
     })
     const data: LocationData = await response.json()
+    console.log("location: ", data);
         
     // !---- return mock data for test ---->
     // return NextResponse.json(attractions);
     return NextResponse.json(data)
   } catch (error) {
-    console.error('Error fetching TripAdvisor attractions details:', error)
-    return NextResponse.json({ error: 'Failed to fetch attractions details' }, { status: 500 })
+    console.error('Error fetching TripAdvisor hotels details:', error)
+    return NextResponse.json({ error: 'Failed to fetch hotels details' }, { status: 500 })
   }
 }
