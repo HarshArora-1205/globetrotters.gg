@@ -1,9 +1,9 @@
 export interface AddressObj {
   street1?: string;
   street2?: string;
-  city?: string;
-  state?: string;
-  country?: string;
+  city: string;
+  state: string;
+  country: string;
   postalcode?: string;
   address_string: string;
 }

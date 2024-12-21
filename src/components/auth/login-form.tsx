@@ -1,7 +1,7 @@
 import Image from "next/image";
 
 import { FaGoogle } from "react-icons/fa6";
-import { FaInstagram } from "react-icons/fa6";
+// import { FaInstagram } from "react-icons/fa6";
 
 import { cn } from "@/lib/utils";
 
@@ -70,13 +70,13 @@ const LoginForm = () => {
             <div className="h-px flex-1 bg-midnight-blue dark:bg-frost-blue"></div>
           </div>
           <form className="w-full space-y-6">
-            <MagicButton
+            {/* <MagicButton
               arialabel="insta signin button"
               text="sign in with instagram"
               variant="auto"
               provider="instagram"
               icon={<FaInstagram className="h-4 w-4" />}
-            />
+            /> */}
             <MagicButton
               arialabel="google signin button"
               text="sign in with google"
@@ -87,7 +87,7 @@ const LoginForm = () => {
           </form>
           <Link
             className={cn(
-              "mt-2 text-center text-sm text-midnight-blue underline-offset-4 hover:underline dark:text-frost-blue",
+              "my-2 text-center text-sm text-midnight-blue underline-offset-4 hover:underline dark:text-frost-blue",
             )}
             href="/auth/signup"
           >

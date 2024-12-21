@@ -24,8 +24,8 @@ import Navbar from "@/components/sections/navbar";
 // const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Wealthbees",
-  description: "Your Personal Finance Assistant | Budget and track all your expenses, investments and income transactions",
+  title: "Globetrotters",
+  description: "Effortlessly plan your next trip with AI. Explore destinations, craft personalized itineraries, and enjoy seamless travel planning from start to finish.",
 };
 
 export default async function Layout({
@@ -38,7 +38,7 @@ export default async function Layout({
     <div className="flex-col md:flex w-full">
       <SessionProvider session={session}>
         <Navbar />
-        <div className="container bg-mist-blue dark:bg-midnight-blue selection:text-midnight-blue selection:bg-golden-haze text-midnight-blue dark:text-frost-blue">
+        <div className="w-full bg-mist-blue dark:bg-midnight-blue selection:text-midnight-blue selection:bg-golden-haze text-midnight-blue dark:text-frost-blue">
           {children}
         </div>
         {/* <Toaster /> */}

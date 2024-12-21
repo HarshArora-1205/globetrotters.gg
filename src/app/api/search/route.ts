@@ -1,3 +1,4 @@
+// import { searchresults } from '@/data/results';
 import { NextResponse } from 'next/server';
 
 export async function GET(request: Request) {
@@ -10,15 +11,15 @@ export async function GET(request: Request) {
 
   try {
     const response = await fetch(
-      `https://api.content.tripadvisor.com/api/v1/location/search?searchQuery=${encodeURIComponent(query)}&language=en`,
+      `https://api.content.tripadvisor.com/api/v1/location/search?searchQuery=${encodeURIComponent(query)}&language=en&key=${process.env.TRIPADVISOR_API_KEY}`,
       {
         headers: {
           'accept': 'application/json',
-          'key': process.env.TRIPADVISOR_API_KEY || ''
         }
       }
     );
-
+    // !---- return mock data for test ---->
+    // return NextResponse.json(searchresults);
     if (!response.ok) {
       throw new Error('TripAdvisor API request failed');
     }

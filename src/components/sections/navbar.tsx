@@ -1,8 +1,6 @@
 "use client"
 
 import { useEffect, useRef, useState } from "react";
-// import { TiLocationArrow } from "react-icons/ti";
-// import { Button} from "@/components/ui/button";
 import { useWindowScroll } from "react-use";
 import clsx from "clsx";
 import gsap from "gsap";
@@ -10,12 +8,19 @@ import Image from "next/image";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import { useCurrentUser } from "@/hooks/use-user";
 import { ModeToggle } from "../common/mode-toggle";
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "../ui/dropdown-menu";
+import { CreditCard, LogOut } from "lucide-react";
+import { signOut } from "next-auth/react";
 
 const navItems = ["escapes", "blogs"];
 
 // !--- This navbar was a part of tutorial by JSMastery ---->
 const Navbar = () => {
   const user = useCurrentUser();
+
+  const handleLogout = () => {
+    signOut();
+  }
 
   // State for toggling audio and visual indicator
   const [isAudioPlaying, setIsAudioPlaying] = useState<boolean>(false);
@@ -93,15 +98,9 @@ const Navbar = () => {
             <h1 className="text-sm font-bold tracking-wider text-sunset-gold">
               GLOBETROTTERS.
             </h1>
-            {/* <Button
-              id="product-button"
-              title="Products"
-              rightIcon={<TiLocationArrow />}
-              className="bg-blue-50 md:flex hidden items-center justify-center gap-1"
-            /> */}
           </div>
 
-          <div className="flex h-full gap-12 items-center">
+          <div className="flex h-full gap-6 items-center">
             <div className="hidden md:block">
               {navItems.map((item, index) => (
                 <a
@@ -114,14 +113,36 @@ const Navbar = () => {
               ))}
             </div>
             <ModeToggle />
-            <Avatar>
-              <AvatarImage src={user?.image || ""} />
-              <AvatarFallback>{user?.name?.charAt(0)}</AvatarFallback>
-            </Avatar>
+            <DropdownMenu modal={false}>
+              <DropdownMenuTrigger asChild>
+                <Avatar className="cursor-pointer">
+                  <AvatarImage src={user?.image || ""} alt={user?.name || "User avatar"} />
+                  <AvatarFallback>{user?.name?.charAt(0) || "U"}</AvatarFallback>
+                </Avatar>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent className="w-56 bg-mist-blue dark:bg-midnight-blue text-midnight-blue dark:text-frost-blue" align="center">
+                <DropdownMenuLabel>
+                  <div className="flex flex-col space-y-1">
+                    <p className="text-sm font-medium leading-none">{user?.name}</p>
+                    <p className="text-xs leading-none text-muted-foreground">{user?.email}</p>
+                  </div>
+                </DropdownMenuLabel>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem>
+                  <CreditCard className="mr-2 h-4 w-4" />
+                  <span>Credits: {user?.availableCredits || 0}</span>
+                </DropdownMenuItem>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem className="cursor-pointer" onClick={handleLogout}>
+                  <LogOut className="mr-2 h-4 w-4" />
+                  <span>Log out</span>
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
 
             <button
               onClick={toggleAudioIndicator}
-              className="ml-10 flex items-center space-x-0.5"
+              className="flex items-center space-x-0.5"
             >
               <audio
                 ref={audioElementRef}

@@ -1,7 +1,7 @@
 import Image from "next/image";
 
 import { FaGoogle } from "react-icons/fa6";
-import { FaInstagram } from "react-icons/fa6";
+// import { FaInstagram } from "react-icons/fa6";
 
 import { cn } from "@/lib/utils";
 
@@ -67,13 +67,13 @@ const RegisterForm = () => {
             <div className="h-px flex-1 bg-midnight-blue dark:bg-frost-blue"></div>
           </div>
           <form className="w-full space-y-6">
-            <MagicButton
+            {/* <MagicButton
               arialabel="insta signin button"
               text="sign up with instagram"
               variant="auto"
               provider="instagram"
               icon={<FaInstagram className="h-4 w-4" />}
-            />
+            /> */}
             <MagicButton
               arialabel="google signin button"
               text="sign up with google"
@@ -83,7 +83,7 @@ const RegisterForm = () => {
             />
           </form>
           <Link
-            className={cn("text-sm text-center mt-2 text-midnight-blue dark:text-frost-blue underline-offset-4 hover:underline")}
+            className={cn("text-sm text-center my-2 text-midnight-blue dark:text-frost-blue underline-offset-4 hover:underline")}
             href="/auth/signin"
           >
             Already have an account?

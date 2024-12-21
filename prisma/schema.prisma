@@ -31,6 +31,7 @@ model User {
   availableCredits      Int                    @default(5)
   isTwoFactorEnabled    Boolean                @default(false)
   twoFactorConfirmation TwoFactorConfirmation?
+  queries          Query[]
   
   createdAt             DateTime               @default(now())
   updatedAt             DateTime               @updatedAt
@@ -84,4 +85,13 @@ model TwoFactorConfirmation {
 
   userId String @unique
   user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model Query {
+  id        String   @id @default(cuid())
+  userId    String
+  query     Json
+  response  Json
+  createdAt DateTime @default(now())
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
