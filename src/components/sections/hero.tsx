@@ -41,7 +41,7 @@ const Hero = () => {
     <div className="relative h-screen w-screen overflow-x-hidden">
       <nav className="container absolute left-1/2 top-0 z-10 mx-auto flex h-fit w-full max-w-screen-xl -translate-x-1/2 transform items-center justify-between p-6 text-sunset-gold">
         <h1 className="font-black">GLOBETROTTERS.</h1>
-        <ul className="absolute left-1/2 flex -translate-x-1/2 transform items-center gap-4 text-sm font-bold text-frost-blue">
+        <ul className="absolute left-1/2 hidden xs:flex -translate-x-1/2 transform items-center gap-4 text-sm font-bold text-frost-blue">
           <li>
             <Link className="hover:text-sunset-blush" href={"/"}>
               home
