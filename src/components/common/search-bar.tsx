@@ -6,7 +6,6 @@ import { useRouter } from "next/navigation";
 import { Input } from "@/components/ui/input";
 import debounce from "lodash/debounce";
 import { useToast } from '@/hooks/use-toast';
-import { v4 as uuidv4 } from "uuid";
 import { TripAdvisorResponse, Location } from "@/types/place-search";
 
 const SearchBar = () => {
@@ -54,8 +53,10 @@ const SearchBar = () => {
 
   const handleResultClick = (location: Location) => {
     try {
-      const randomId = uuidv4();
-      router.push(`/escapes/${randomId}?escape=${encodeURIComponent(location.name)}`);
+      // const randomId = uuidv4();
+      console.log(location.address_obj.city);
+      
+      router.push(`/escapes/${location.location_id}?escape=${encodeURIComponent(location.name)}&city=${encodeURIComponent(location.address_obj.city)}`);
       setShowDropdown(false);
       toast({
         title: "Success",
@@ -80,20 +81,20 @@ const SearchBar = () => {
       />
 
       {showDropdown && search.length > 2 && (
-        <div className="absolute top-full left-0 w-full mt-1 bg-white rounded-md shadow-lg z-50">
+        <div className="absolute top-full left-0 w-full mt-1 text-midnight-blue dark:text-frost-blue bg-mist-blue dark:bg-midnight-blue rounded-md shadow-lg z-50">
           {isLoading ? (
             <div className="p-4 text-gray-500">Loading...</div>
           ) : error ? (
-            <div className="p-4 text-red-500">Error fetching results</div>
+            <div className="p-4 text-rose-500">Error fetching results</div>
           ) : searchResults?.data && searchResults.data.length > 0 ? (
             <ul className="max-h-60 overflow-auto">
               {searchResults.data.slice(0, 5).map((location) => (
                 <li
                   key={location.location_id}
                   onClick={() => handleResultClick(location)}
-                  className="p-3 hover:bg-gray-100 cursor-pointer transition-colors"
+                  className="p-3 hover:bg-gray-100 group cursor-pointer transition-colors"
                 >
-                  <div className="font-medium">{location.name}</div>
+                  <div className="font-medium group-hover:dark:text-midnight-blue">{location.name}</div>
                   <div className="text-sm text-gray-500">
                     {location.address_obj.address_string}
                   </div>

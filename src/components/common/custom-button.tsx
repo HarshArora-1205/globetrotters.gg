@@ -1,7 +1,10 @@
+"use client"
+
 import { cn } from "@/lib/utils";
 import React from "react";
 
 type Props = {
+  onClick?: () => void;
   textFill: string;
   mainFill: string;
   accentFill: string;
@@ -11,6 +14,7 @@ type Props = {
 };
 
 const UiButton = ({
+  onClick,
   text,
   disabled,
   textFill,
@@ -20,6 +24,7 @@ const UiButton = ({
 }: Props) => {
   return (
     <button
+      onClick={onClick}
       disabled={disabled}
       className={cn(
         `group relative px-6 py-2 text-base font-bold tracking-widest focus:outline-none disabled:cursor-not-allowed`,

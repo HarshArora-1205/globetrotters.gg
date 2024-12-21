@@ -9,6 +9,8 @@ import { ThemeProvider } from "@/components/providers/theme-provider";
 import { dela, gilroy } from "@/lib/fonts";
 import ReactQueryProvider from "@/components/providers/react-query-provider";
 import { Suspense } from "react";
+import Footer from "@/components/sections/footer";
+import Loading from "./loading";
 
 export const metadata: Metadata = {
   title: "Globetrotters",
@@ -16,7 +18,7 @@ export const metadata: Metadata = {
     "Effortlessly plan your next trip with AI. Explore destinations, craft personalized itineraries, and enjoy seamless travel planning from start to finish.",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
@@ -33,9 +35,8 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <ReactQueryProvider>
-            <Suspense fallback={<div>Loading...</div>}>
-              {children}
-            </Suspense>
+            <Suspense fallback={<Loading />}>{children}</Suspense>
+            <Footer />
             <Toaster />
             <ReactQueryDevtools initialIsOpen={false} />
           </ReactQueryProvider>

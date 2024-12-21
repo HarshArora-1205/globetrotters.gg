@@ -32,6 +32,8 @@ const MagicButton = ({ text, variant, icon, arialabel, onClick, provider }: Butt
       } else {
         setStyle("night")
       }
+    } else {
+      setStyle(variant)
     }
   }, [theme, variant])
 
@@ -46,7 +48,7 @@ const MagicButton = ({ text, variant, icon, arialabel, onClick, provider }: Butt
       aria-label={arialabel}
       onClick={provider ? () => login(provider) : onClick}
       className={cn(
-        "relative flex cursor-pointer select-none items-center justify-center gap-2 overflow-clip border bg-transparent p-3 pt-4 transition-all duration-200 ease-in-out",
+        "relative flex w-full cursor-pointer select-none items-center justify-center gap-2 overflow-clip border bg-transparent p-3 pt-4 transition-all duration-200 ease-in-out",
         isHovered
           ? style === "frost"
             ? "border-frost-blue text-midnight-blue"

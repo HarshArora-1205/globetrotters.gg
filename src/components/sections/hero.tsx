@@ -13,10 +13,11 @@ import { MdArrowRightAlt } from "react-icons/md";
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import UiButton from "../common/custom-button";
-// import { cn } from "@/lib/utils";
+import { useRouter } from "next/navigation";
 
 const Hero = () => {
   gsap.registerPlugin(ScrollTrigger);
+  const router = useRouter();
 
   useGSAP(() => {
     gsap.set("#video-frame", {
@@ -38,6 +39,34 @@ const Hero = () => {
 
   return (
     <div className="relative h-screen w-screen overflow-x-hidden">
+      <nav className="container absolute left-1/2 top-0 z-10 mx-auto flex h-fit w-full max-w-screen-xl -translate-x-1/2 transform items-center justify-between p-6 text-sunset-gold">
+        <h1 className="font-black">GLOBETROTTERS.</h1>
+        <ul className="absolute left-1/2 flex -translate-x-1/2 transform items-center gap-4 text-sm font-bold text-frost-blue">
+          <li>
+            <Link className="hover:text-sunset-blush" href={"/"}>
+              home
+            </Link>
+          </li>
+          <li>
+            <Link className="hover:text-sunset-blush" href={"/escapes"}>
+              escapes
+            </Link>
+          </li>
+          <li>
+            <Link className="hover:text-sunset-blush" href={"/blog"}>
+              blog
+            </Link>
+          </li>
+        </ul>
+        <div className="flex gap-2 tracking-wider">
+          <button
+            onClick={() => router.push("/auth/signup")}
+            className="border-2 border-sunset-gold px-4 py-2 text-xs font-bold transition-all duration-300 ease-in-out hover:bg-sunset-gold hover:text-midnight-blue"
+          >
+            HOP IN!
+          </button>
+        </div>
+      </nav>
       <div
         id="video-frame"
         className="relative mx-auto flex h-screen w-full flex-col items-center justify-center tracking-wider"
@@ -57,7 +86,7 @@ const Hero = () => {
         <div className="relative z-20 flex flex-col items-center gap-16 px-8 md:px-0">
           <div className="relative mt-8 w-fit flex-col text-center text-mist-blue sm:mt-0">
             <div className="flex justify-center xs:justify-between">
-              <h3 className="mt-2 text-lg z-20 font-black tracking-widest xs:-ml-6">
+              <h3 className="z-20 mt-2 text-lg font-black tracking-widest xs:-ml-6">
                 FIND YOUR
               </h3>
               <div className="absolute -top-10 z-10 flex w-fit items-center gap-1 rounded-sm p-1 text-[10px] font-semibold leading-[0.6] outline-dashed outline-1 xs:relative xs:top-auto">
@@ -71,40 +100,13 @@ const Hero = () => {
           </div>
 
           <UiButton
+            onClick={() => router.push("/auth/signup")}
             text="plan now"
             accentFill="sunset-blush"
             mainFill="sunset-gold"
             disabledFill="muted-foreground"
             textFill="midnight-blue"
           />
-          {/* <button
-            // disabled
-            className={cn(
-              `group relative px-6 py-2 text-base font-bold tracking-widest focus:outline-none disabled:cursor-not-allowed`,
-              `bg-sunset-gold text-midnight-blue hover:bg-sunset-blush disabled:bg-muted-foreground`,
-            )}
-          >
-            <div
-              className={cn(
-                "absolute inset-0 z-10 translate-x-1 translate-y-1 transform border-2 transition-transform duration-200",
-                "group-hover:translate-x-0.5 group-hover:translate-y-0.5",
-                "group-active:translate-x-0 group-active:translate-y-0",
-                "group-disabled:translate-x-1 group-disabled:translate-y-1",
-                `border-sunset-gold`,
-                `group-hover:border-sunset-blush`,
-                `group-disabled:border-muted-foreground`,
-              )}
-            ></div>
-            <span
-              className={cn(
-                `relative z-20 inline-block uppercase transition-transform duration-75`,
-                "group-active:translate-x-0.5 group-active:translate-y-0.5",
-                `group-disabled:translate-x-0 group-disabled:translate-y-0`,
-              )}
-            >
-              plan now
-            </span>
-          </button> */}
         </div>
         <div className="container relative -mb-40 mt-4 flex max-w-screen-xl items-end justify-between p-4 text-sunset-gold">
           <div className="flex flex-col gap-6 text-3xl">
