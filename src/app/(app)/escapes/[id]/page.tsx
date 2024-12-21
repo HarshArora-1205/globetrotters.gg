@@ -22,6 +22,9 @@ type Params = Promise<{ id: string }>
 type SearchParams = Promise<{ [key: string]: string | string[] | undefined }>
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import MagicButton from '@/components/common/hover-button'
+import AttractionsList from '@/components/sections/attractions'
+import StayList from '@/components/sections/stays'
+import RestaurantList from '@/components/sections/restaurants'
 
 
 const fetchLocationDetails = async (id: string): Promise<LocationDetails> => {
@@ -174,9 +177,9 @@ export default function EscapePage(props: {
             </h1>
             <TabsList>
               <TabsTrigger value="details">DETAILS</TabsTrigger>
-              <TabsTrigger disabled value="attractions">ATTRACTIONS</TabsTrigger>
-              <TabsTrigger disabled value="stays">STAYS</TabsTrigger>
-              <TabsTrigger disabled value="restaurants">RESTAURANTS</TabsTrigger>
+              <TabsTrigger value="attractions">ATTRACTIONS</TabsTrigger>
+              <TabsTrigger value="stays">STAYS</TabsTrigger>
+              <TabsTrigger value="restaurants">RESTAURANTS</TabsTrigger>
             </TabsList>
           </div>
           <TabsContent className='w-full' value="details">
@@ -192,63 +195,20 @@ export default function EscapePage(props: {
               </div>
             </div>
           </TabsContent>
-          <TabsContent value="attractions">Change your password here.</TabsContent>
+          <TabsContent value="attractions" className='p-4'>
+            <h1 className='mb-2 text-midnight-blue font-bold dark:text-frost-blue'>nearby attractions</h1>
+            <AttractionsList id={id} lat={locationDetails.latitude} lon={locationDetails.longitude} />
+          </TabsContent>
+          <TabsContent value="stays" className='p-4'>
+            <h1 className='mb-2 text-midnight-blue font-bold dark:text-frost-blue'>nearby hotels</h1>
+            <StayList id={id} lat={locationDetails.latitude} lon={locationDetails.longitude} />
+          </TabsContent>
+          <TabsContent value="restaurants" className='p-4'>
+            <h1 className='mb-2 text-midnight-blue font-bold dark:text-frost-blue'>nearby restaurants</h1>
+            <RestaurantList id={id} lat={locationDetails.latitude} lon={locationDetails.longitude} />
+          </TabsContent>
         </Tabs>
       </section>
-      {/* <h1 className="text-4xl font-bold mb-4">{locationDetails.name}</h1>
-      <p className="text-xl mb-8">{locationDetails.description}</p>
-
-      <section className="mb-8">
-        <h2 className="text-2xl font-semibold mb-4">Weather</h2>
-        <p>Temperature: {weatherData?.main.temp}°C</p>
-        <p>Conditions: {weatherData?.weather[0].description}</p>
-      </section>
-
-      <section className="mb-8">
-        <h2 className="text-2xl font-semibold mb-4">TripAdvisor Photos</h2>
-        <div className="grid grid-cols-2 gap-4">
-          {tripAdvisorPhotos?.data.slice(0, 8).map((photo) => (
-            <Image
-              key={photo.id}
-              src={photo.images.medium.url}
-              alt={photo.caption}
-              width={photo.images.medium.width}
-              height={photo.images.medium.height}
-              className="rounded-lg"
-            />
-          ))}
-        </div>
-      </section>
-
-      <section className="mb-8">
-        <h2 className="text-2xl font-semibold mb-4">Unsplash Photos</h2>
-        <div className="grid grid-cols-2 gap-4">
-          {unsplashPhotos?.results.slice(0, 8).map((photo) => (
-            <Image
-              key={photo.id}
-              src={photo.urls.small || ''}
-              alt={photo.alt_description || ''}
-              width={400}
-              height={300}
-              className="rounded-lg"
-            />
-          ))}
-        </div>
-      </section>
-
-      <section className="mb-8">
-        <h2 className="text-2xl font-semibold mb-4">Reviews</h2>
-        {tripAdvisorReviews?.data.slice(0, 5).map((review) => (
-          <div key={review.id} className="mb-4 p-4 bg-gray-100 rounded-lg">
-            <h3 className="font-semibold">{review.title}</h3>
-            <p className="text-sm text-gray-600">Rating: {review.rating} / 5</p>
-            <p>{review.text}</p>
-          </div>
-        ))}
-      </section>
-      <Button onClick={handleCreateItinerary} className="mt-8">
-        Create Itinerary
-      </Button> */}
     </div>
   )
 }
