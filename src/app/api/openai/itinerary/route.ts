@@ -5,7 +5,7 @@ import { auth } from "@/auth";
 import {prisma} from "@/lib/db";
 import { tripSchema } from "@/schema/ai";
 
-export const maxDuration = 120
+export const maxDuration = 60
 
 const modelName = "gpt-4o-2024-08-06"
 export async function POST(req: Request) {
