@@ -117,8 +117,8 @@ export default function WizardPage() {
       });
 
       toast({
-        title: "Itinerary generated",
-        description: "Your itinerary has been successfully generated.",
+        title: "Itinerary being generated",
+        description: "Your itinerary is being generated, please wait.",
       });
 
       setActiveTab("itinerary");
@@ -409,7 +409,7 @@ export default function WizardPage() {
                 {/* <MapView itinerary={itinerary} /> */}
               </div>
               <div className="order-1 md:order-2">
-                <ItineraryDisplay isLoading={isLoading} itinerary={itinerary} />
+                <ItineraryDisplay isLoading={isLoading} itinerary={object as z.infer<typeof tripSchema>} />
               </div>
             </div>
           )}
