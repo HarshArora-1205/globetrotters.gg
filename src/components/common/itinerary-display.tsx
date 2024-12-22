@@ -16,7 +16,7 @@ export function ItineraryDisplay({
   itinerary: TripSchema;
   isLoading: boolean;
 }) {
-  if (isLoading || !itinerary) {
+  if (!itinerary || isLoading) {
     return (
       <div className="space-y-4">
         <h2 className="text-2xl font-bold">Your Itinerary</h2>

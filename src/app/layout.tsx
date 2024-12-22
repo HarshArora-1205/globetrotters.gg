@@ -26,7 +26,7 @@ export default async function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${gilroy.variable} ${dela.variable} font-gilroy antialiased`}
+        className={`${gilroy.variable} ${dela.variable} bg-mist-blue dark:bg-midnight-blue font-gilroy antialiased`}
       >
         <ThemeProvider
           attribute="class"
